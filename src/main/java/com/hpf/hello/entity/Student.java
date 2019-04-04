@@ -3,9 +3,10 @@ package com.hpf.hello.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class Student {
+public class Student implements Serializable {
 
 
     @Id
@@ -14,7 +15,7 @@ public class Student {
 
     private  String name;
 
-    private  String age;
+    private  Integer age;
 
     public Student() {
     }
@@ -35,11 +36,16 @@ public class Student {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Id:" + this.getId() + " Name:" + this.getName() + " Age:" + this.getAge();
     }
 }
