@@ -23,6 +23,13 @@ spring:
         max-wait: -1ms
         min-idle: 0
         max-idle: 8
+  application:
+    name: Spring-boot-rabbitmq
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 mybatis:
   type-aliases-package: com.hello.entity
   config-location: classpath:mybatis/mybatis-config.xml
