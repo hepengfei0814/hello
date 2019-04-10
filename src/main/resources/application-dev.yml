@@ -30,7 +30,15 @@ spring:
     port: 5672
     username: guest
     password: guest
+  mail:
+    host: smtp.qq.com
+    username: 252281711@qq.com
+    password: omtfomvlnuqgbgfc
+    default-encoding: UTF-8
 mybatis:
   type-aliases-package: com.hello.entity
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+mail:
+  fromMail:
+    addr: 252281711@qq.com
