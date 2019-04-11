@@ -35,6 +35,9 @@ spring:
     username: 252281711@qq.com
     password: omtfomvlnuqgbgfc
     default-encoding: UTF-8
+  data:
+    mongodb:
+      uri: mongodb://hepengfei:123456@localhost:27017/admin
 mybatis:
   type-aliases-package: com.hello.entity
   config-location: classpath:mybatis/mybatis-config.xml

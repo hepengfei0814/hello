@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.hpf.hello.repository")
+@MapperScan("com.hpf.hello.repositoryImpl")
 public class HelloApplication {
 
     public static void main(String[] args) {

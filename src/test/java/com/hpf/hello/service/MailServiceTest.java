@@ -29,4 +29,10 @@ public class MailServiceTest {
                 "</html>";
         mailService.sendHtmlMail("787933471@qq.com","test simple mail",content);
     }
+
+    @Test
+    public void sendAttachmentsMail() {
+        String filePath="f:\\lolPicture\\chengfa.png";
+        mailService.sendAttachmentsMail("787933471@qq.com", "主题：带附件的邮件", "有附件，请查收！", filePath);
+    }
 }

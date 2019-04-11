@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 
 @Service
 public class MailServiceImpl implements MailService {
@@ -56,6 +58,28 @@ public class MailServiceImpl implements MailService {
             logger.info("html邮件发送成功");
         } catch (MessagingException e) {
             logger.error("发送html邮件时发生异常！", e);
+        }
+    }
+
+    @Override
+    public void sendAttachmentsMail(String to, String subject, String content, String filePath) {
+        MimeMessage message = mailSender.createMimeMessage();
+
+        try {
+            MimeMessageHelper messageHelper = new MimeMessageHelper(message,true);
+            messageHelper.setFrom(from);
+            messageHelper.setTo(to);
+            messageHelper.setSubject(subject);
+            messageHelper.setText(content,true);
+
+            FileSystemResource file = new FileSystemResource(new File(filePath));
+            String fileName = filePath.substring(filePath.lastIndexOf(File.separator));
+            messageHelper.addAttachment(fileName,file);
+
+            mailSender.send(message);
+            logger.info("带附件的邮件已经发送。");
+        }catch (MessagingException e) {
+            logger.error("发送带附件的邮件时发生异常！", e);
         }
     }
 }
